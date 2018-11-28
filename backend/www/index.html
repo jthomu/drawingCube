@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Chatroom</title>
+      <style>
+
+
+
+      </style>
+  </head>
+  <body>
+    <h1>Indie Chat Room</h1>
+
+    <div id="gui">
+      <input type="name" id="username">
+      <input type="text" id="usertext">
+      <button id="enter">enter</button>
+    </div>
+
+    <script src="/socket.io/socket.io.js">
+    </script>
+
+      <script>
+
+        const socket = io()
+        const enter = document.querySelector('#enter')
+        const utxt = document.querySelector('#usertext')
+        const uname = document.querySelector('#username')
+
+        function addNewTextBox(name,txt){
+          let div = document.createElement('div')
+          div.innerHTML = `<b>${name}</b>: ${txt}`
+          document.body.appendChild(div)
+        }
+
+        enter.addEventListener('click', function() {
+          addNewTextBox(uname.value, utxt.value)
+          console.log('mouse clicked')
+          socket.emit('enter-click', {
+            name:uname.value,
+            text:utxt.value
+          })
+        })
+
+        socket.on('newMsg',function(data){
+          addNewTextBox(data.name,data.text)
+        })
+
+      </script>
+
+
+  </body>
+</html>
