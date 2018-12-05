@@ -3,9 +3,7 @@ const app = express()
 const http = require('http').Server(app)
 const io = require('socket.io')(http)
 
-app.get('/', function(req,res){
-    res.sendFile(__dirname+'/www/index.html')
-})
+app.use( express.static(__dirname+'/www') )
 
 io.on('connection', function(socket){
   console.log('new user')
