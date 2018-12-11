@@ -5,7 +5,7 @@ let cube
 let renderer
 
 function setup(){
-  canvas = createCanvas(80, 20, WEBGL)
+  canvas = createCanvas(400, 100, WEBGL)
 
   scene = new THREE.Scene()
 
@@ -14,7 +14,9 @@ function setup(){
 
 
   let geometry = new THREE.BoxGeometry(80, 20, 80)
-  let material = new THREE.MeshNormalMaterial( { side: 2} )
+  let material = new THREE.MeshBasicMaterial({
+    map: new THREE.CanvasTexture(canvas.elt)
+  })
   cube = new THREE.Mesh(geometry, material)
   scene.add(cube)
 
