@@ -1,8 +1,8 @@
 {
-  "name": "socket-demo",
+  "name": "drawingWalls",
   "version": "1.0.0",
-  "description": "a simple chatroom app",
-  "main": "server.js",
+  "description": "virtual room where you can draw on the walls",
+  "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
