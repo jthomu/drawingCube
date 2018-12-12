@@ -17,7 +17,7 @@ io.on('connection', function(socket){
   })
 })
 
-http.listen(8000,function(err){
+http.listen(80,function(err){
     if(err){
       console.log(err)
     } else {
